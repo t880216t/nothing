@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Vudio from 'vudio.js'
 import {Player} from 'react-music-widget'
+
 import 'react-h5-audio-player/lib/styles.css';
 
 import testAudio from '../assets/b.mp3'
@@ -22,6 +23,10 @@ export default class Page extends Component{
     }
 
   componentDidMount() {
+    setTimeout(()=> this._initPlay(),3000)
+  }
+
+  _initPlay=()=>{
     if (!this.vudio){
       var audioObj = document.getElementsByTagName('audio')[0];
       var canvasObj = document.querySelector('#canvas');
@@ -62,6 +67,11 @@ export default class Page extends Component{
           </div>
           <div className={styles.audio_warpper}>
             <Player panelColor="#636e72" autoHidden={true} musicList={musicList} position='bottom'/>
+            {/*<ReactAudioPlayer*/}
+            {/*  src={testAudio}*/}
+            {/*  // autoPlay*/}
+            {/*  controls*/}
+            {/*/>*/}
           </div>
         </div>
       )
