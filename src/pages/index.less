@@ -3,7 +3,7 @@
   text-align: center;
   display: flex;
   height: 100vh;
-  background-color: #51074b;
+  background-color: #2d3436;
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
@@ -12,10 +12,19 @@
 
 .canva_warpper{
   width: 100%;
+  ._canvas{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
 }
 
 .audio_warpper{
   position: fixed;
   bottom: 0;
   z-index: 999;
+  height: 0;
+  overflow: hidden;
 }
