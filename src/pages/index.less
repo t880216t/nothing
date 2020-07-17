@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.canva_warpper{
+.canva_wrapper{
   width: 100%;
   ._canvas{
     height: 100%;
@@ -21,10 +21,37 @@
   }
 }
 
-.audio_warpper{
+.audio_wrapper{
   position: fixed;
   bottom: 0;
-  z-index: 999;
+  //z-index: 9999;
   height: 0;
   overflow: hidden;
+}
+
+.push_wrapper{
+  position: fixed;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.time_wrapper{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  h1 {
+    font-size: 40px;
+    padding-bottom: 2rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
 }
