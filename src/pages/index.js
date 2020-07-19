@@ -17,9 +17,9 @@ class Page extends Component {
     super(props);
     // 初始状态
     this.state = {
-      musicUrl: 'http://192.168.26.74:8000/file/%E9%98%BF%E7%82%B3-%E4%BA%8C%E6%B3%89%E6%98%A0%E6%9C%88.mp3',
+      musicUrl: '/assert/eqyy.mp3',
       clientWidth: 1024,
-      avatar: 'https://zerosoul.github.io/rc-bullets/assets/img/heads/girl.jpg',
+      avatar: '',
       isMobile: false,
     };
     this.vudio = null;
