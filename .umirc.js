@@ -36,13 +36,8 @@ export default {
       target: "http://127.0.0.1:5000",
       ws: false,
     },
-    '/hot': {
-      target: 'http://mp3.9ku.com/',
-      changeOrigin: true,
-      // pathRewrite: { '^/file': '' },
-    },
-    '/mp3': {
-      target: 'http://mp3.9ku.com/',
+    '/assert': {
+      target: 'http://nothing.orion-c.top',
       changeOrigin: true,
       // pathRewrite: { '^/file': '' },
     },
