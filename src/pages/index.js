@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Vudio from 'vudio.js';
-import {Player} from 'react-music-widget'
 import { connect } from 'dva';
 
 import BulletScreen from '../components/BulletScreen';
 import TimeWrapper from '../components/TimeWrapper';
+import AudioPlay from '../components/AudioPlay';
 
 import styles from './index.less';
 
@@ -18,10 +18,6 @@ class Page extends Component {
     // 初始状态
     this.state = {
       musicUrl: '/assert/eqyy.mp3',
-      musicList: [{
-        url: '/assert/eqyy.mp3',
-        name: '二泉映月-阿炳'
-      }],
       clientWidth: 1024,
       avatar: '',
       isMobile: false,
@@ -38,7 +34,7 @@ class Page extends Component {
 
   componentDidMount() {
     this.durTime = localStorage.getItem('durTime') || 0;
-    this._initPlay()
+    // this._initPlay()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,10 +42,6 @@ class Page extends Component {
       if (nextProps.wsSocket.configData.musicUrl !== this.state.musicUrl){
         this.setState({
           musicUrl: nextProps.wsSocket.configData.musicUrl,
-          musicList: [{
-            url: nextProps.wsSocket.configData.musicUrl,
-            name: '二泉映月-阿炳'
-          }]
         },() => {
           if (!localStorage.getItem('user_sid')){
             localStorage.setItem('user_sid',nextProps.wsSocket.configData.sid)
@@ -106,7 +98,7 @@ class Page extends Component {
     }
   };
 
-  handleCanPlayThrough = (e) => {
+  handleCanPlay = () => {
     this._initPlay()
   }
 
@@ -115,14 +107,14 @@ class Page extends Component {
   }
 
   render() {
-    const { isMobile, musicList, avatar } = this.state;
+    const { isMobile, musicUrl, avatar } = this.state;
     return (
       <div className={styles.container}>
         <div className={styles.canva_wrapper}>
           <canvas className={styles._canvas} width="100%" id="canvas"></canvas>
         </div>
         <div className={styles.audio_wrapper}>
-          <Player panelColor="#636e72" autoHidden={true} musicList={musicList} position='top'/>
+          <AudioPlay autoPlay loop showControl id={'myAudio'} src={musicUrl} onCanPlay={this.handleCanPlay()}></AudioPlay>
         </div>
         <div className={styles.push_wrapper} style={{ bottom: !isMobile ? '30vh' : 1 }}>
           <BulletScreen avatar={avatar}/>
