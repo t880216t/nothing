@@ -10,6 +10,7 @@ const Model = {
     avatar: null,
     configData: {},
     messageData: {id: null, message: null},
+    messageList: []
   },
   subscriptions: {
     socket({ dispatch }) { // socket相关
@@ -36,8 +37,16 @@ const Model = {
       console.log('payload', payload)
       yield put({ type: 'updateState', payload: { configData: payload } });
     },
-    *setServerMessage({ payload }, { put }) {
-      yield put({ type: 'updateState', payload: { messageData: payload } });
+    *setServerMessage({ payload }, { put, select }) {
+      const messageList = yield select(
+        state => state.wsSocket.messageList
+      );
+      if(messageList){
+        messageList.push(payload)
+      }else {
+        console.log('error', messageList)
+      }
+      yield put({ type: 'updateState', payload: { messageData: payload, messageList } });
     },
     *querySendMessage({ payload }, { call }) {
       yield call(querySendMessage, payload);

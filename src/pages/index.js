@@ -5,6 +5,7 @@ import { connect } from 'dva';
 import BulletScreen from '../components/BulletScreen';
 import TimeWrapper from '../components/TimeWrapper';
 import AudioPlay from '../components/AudioPlay';
+import MessageList from '../components/MessageList';
 
 import styles from './index.less';
 
@@ -121,6 +122,9 @@ class Page extends Component {
         </div>
         <div className={styles.time_wrapper} style={{ bottom: !isMobile ? '30vh' : 1 }}>
           <TimeWrapper durTime={this.durTime} />
+        </div>
+        <div className={styles.open_message_button}>
+          <MessageList />
         </div>
       </div>
     );
